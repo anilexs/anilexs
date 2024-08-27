@@ -31,4 +31,4 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="<?= $host ?>asset/js/structure.js"></script>
     <script src="<?= $host ?>asset/js/nav.js"></script>
-    <!-- <link rel="icon" type="image/png" href="<?= $host ?>asset/img/logo.png"> -->
+    <link rel="icon" type="image/png" href="<?= $host ?>asset/img/logo.png">

@@ -33,53 +33,109 @@ if(!empty($_GET['code'])){
     
     $result = json_decode($result, true);
     $access_token = $result['access_token'];
+    if($access_token){
+        $discord_user_url = "https://discordapp.com/api/users/@me";
+        $header = array("Authorization: Bearer $access_token", "Content-Type: application/x-www-form-urlencoded");
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($ch, CURLOPT_URL, $discord_user_url);
+        curl_setopt($ch, CURLOPT_POST, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        
+        $result = curl_exec($ch); 
+        
+        $result = json_decode($result, true);
+        
+        echo "<pre>";
+        var_dump($result);
+        echo "</pre>";
+    }else{
+        header("Location: http://localhost/anilexs/connexionbbb");
+    }
+    ?>
+    <!-- <img src="https://cdn.discordapp.com/avatars/<?= $result['id'] ?>/<?= $result['avatar'] ?>.jpg" alt=""> -->
+    <?php
+}else if(isset($_POST['credential'])){
+    $credential = $_POST['credential'];
+
+    list($header, $payload, $signature) = explode('.', $credential);
+
+    $decodedHeader = base64_decode($header);
+    $decodedPayload = base64_decode($payload);
     
-    $discord_user_url = "https://discordapp.com/api/users/@me";
-    $header = array("Authorization: Bearer $access_token", "Content-Type: application/x-www-form-urlencoded");
+    $headerData = json_decode($decodedHeader, true);
+    $payloadData = json_decode($decodedPayload, true);
     
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-    curl_setopt($ch, CURLOPT_URL, $discord_user_url);
-    curl_setopt($ch, CURLOPT_POST, false);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    
-    $result = curl_exec($ch); 
-    
-    $result = json_decode($result, true);
-    
+    $name = $payloadData['given_name'] ?? '';
+    $prenom = $payloadData['family_name'] ?? '';
+    $email = $payloadData['email'] ?? '';
+    $picture = $payloadData['picture'] ?? '';
+    $sub = $payloadData['sub'] ?? '';
+    $hashedSub = password_hash($sub, PASSWORD_DEFAULT);
     echo "<pre>";
-    var_dump($result);
+    var_dump($payloadData);
     echo "</pre>";
+    
+
+    // $user = User::googleAconteVerify($email, $sub);
+    // if($user[0]){
+        // echo "il a un compte <br>";
+        // echo 'id google : '. $sub . '<br>';
+
+        
+        // echo "Nom: $name<br>";
+        // echo "Prénom: $prenom<br>";
+        // echo "Email: $email<br>";
+        // echo 'id google  hach: '. $hashedSub . '<br>';
+        // echo '<img src="'.$picture.'" alt="" style="width: 100px; height: 100px"><br>';
+        // if($user[1]){
+        //     // $userInfo = User::loginGoogle($email);
+        // }else{
+        //     echo "false";
+        // }
+    // }
 }
 
 
 
-echo "<pre>";
-var_dump($_POST);
-echo "</pre>";
+// echo "<pre>";
+// var_dump($_POST);
+// echo "</pre>";
 require_once "inc/header.php"; ?>
-<title>connexion</title>
+<link rel="stylesheet" href="asset/css/connexion.css">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+<title>connexion</title>
 <?php require_once "inc/nav.php"; ?>
-<img src="https://cdn.discordapp.com/avatars/<?= $result['id'] ?>/<?= $result['avatar'] ?>.jpg" alt="">
 
-<div id="g_id_onload"
-    data-client_id="224348978546-jki2a29kf80k1q441lp7khc05k67j8kt.apps.googleusercontent.com"
-    data-context="signup"
-    data-ux_mode="popup"
-    data-login_uri="http://localhost/anilexs/connexion.php?type=google"
-    data-auto_prompt="false">
+<div class="contenaire">
+    <div class="left">
+        
+    </div>
+    <div class="right">
+        <div class="loginDiscord"><a href="https://discord.com/oauth2/authorize?client_id=1277208767645220916&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fanilexs%2Fconnexion&scope=identify+guilds"><img src="asset/img/discord_logo.png" alt=""></a></div>
+        
+        <div class="googleContenaire">
+            <div id="g_id_onload"
+                 data-client_id="417235652555-bb9ctdul0e58mfvq7odc1538efji7ap7.apps.googleusercontent.com"
+                 data-context="signin"
+                 data-ux_mode="popup"
+                 data-login_uri="http://localhost/anilexs/connexion.php"
+                 data-auto_prompt="false">
+            </div>
+            
+            <div class="g_id_signin"
+                 data-type="icon"
+                 data-shape="circle"
+                 data-theme="filled_blue"
+                 data-text="signin_with"
+                 data-size="large">
+            </div>
+        </div>
+    </div>
 </div>
-    
-<div class="g_id_signin"
-    data-type="standard"
-    data-shape="pill"
-    data-theme="filled_blue"
-    data-text="signin_with"
-    data-size="large"
-    data-logo_alignment="left">
-</div>
+
 <?php require_once "inc/footer.php"; ?>
