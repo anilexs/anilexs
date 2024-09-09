@@ -2,6 +2,21 @@
 // https://console.cloud.google.com/apis/dashboard?hl=fr&pli=1&authuser=3&project=anilexs&supportedpurview=project
 $discord_link = "https://discord.com/oauth2/authorize?client_id=1277208767645220916&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fanilexs%2Fconnexion&scope=identify+guilds";
 
+
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+
+// Récupérer le nom de domaine
+$domainName = $_SERVER['HTTP_HOST'];
+
+// Récupérer le chemin de la page actuelle
+$path = $_SERVER['REQUEST_URI'];
+
+// Concaténer pour obtenir l'URL complète
+$url = $protocol . $domainName . $path;
+
+echo $url;
+
+
 if(!empty($_GET['code'])){
     $discord_code = $_GET['code'];
     $payload = [
@@ -54,7 +69,7 @@ if(!empty($_GET['code'])){
         var_dump($result);
         echo "</pre>";
     }else{
-        header("Location: http://localhost/anilexs/connexionbbb");
+        header("Location: http://localhost/anilexs/connexion");
     }
     ?>
     <!-- <img src="https://cdn.discordapp.com/avatars/<?= $result['id'] ?>/<?= $result['avatar'] ?>.jpg" alt=""> -->
@@ -100,17 +115,11 @@ if(!empty($_GET['code'])){
     // }
 }
 
-
-
 // echo "<pre>";
 // var_dump($_POST);
-// echo "</pre>";
-require_once "inc/header.php"; ?>
-<link rel="stylesheet" href="asset/css/connexion.css">
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-<title>connexion</title>
-<?php require_once "inc/nav.php"; ?>
-
+?>
+<link rel="stylesheet" href="http://localhost/anilexs/asset/css/connexion.css">
+<script src="https://accounts.google.com/gsi/client" async defer></script>z
 <div class="contenaire">
     <div class="left">
         
@@ -123,7 +132,7 @@ require_once "inc/header.php"; ?>
                  data-client_id="417235652555-bb9ctdul0e58mfvq7odc1538efji7ap7.apps.googleusercontent.com"
                  data-context="signin"
                  data-ux_mode="popup"
-                 data-login_uri="http://localhost/anilexs/connexion.php"
+                 data-login_uri=<?= isset($_GET['page']) ? $_GET['page'] : "http://localhost/anilexs/connexion.php" ?>
                  data-auto_prompt="false">
             </div>
             
@@ -137,5 +146,3 @@ require_once "inc/header.php"; ?>
         </div>
     </div>
 </div>
-
-<?php require_once "inc/footer.php"; ?>

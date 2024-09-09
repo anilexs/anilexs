@@ -27,3 +27,20 @@ li{
     height: 60px;
     display: block;
 }
+
+.divAuthenticationBack{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.divAuthentication{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 70%;
+    box-sizing: border-box;
+}

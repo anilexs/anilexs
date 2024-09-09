@@ -1,6 +1,13 @@
 </head>
 <body>
-<?php if(isset($_COOKIE['token'])){ ?>
+<?php
+if($_POST != []){ ?>
+    <script>
+        var postData = <?= json_encode($_POST) ?>;
+        authentication(postData);
+    </script>
+<?php }
+if(isset($_COOKIE['token'])){ ?>
     <nav>
 
     </nav>
