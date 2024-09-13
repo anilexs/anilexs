@@ -7,7 +7,7 @@ if($_POST != []){ ?>
         authentication(postData);
     </script>
 <?php }
-if(isset($_COOKIE['token'])){ ?>
+if(isset($_COOKIE['anilexs_Key'])){ ?>
     <nav>
 
     </nav>

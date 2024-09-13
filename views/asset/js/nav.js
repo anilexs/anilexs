@@ -1,4 +1,5 @@
 var currentUrl = window.location.href;
+console.log(currentUrl);
 $(document).ready(function(){
     $('#authentication').on('click', function(e) {
         authentication();

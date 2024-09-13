@@ -1,6 +1,6 @@
 <?php 
 // https://console.cloud.google.com/apis/dashboard?hl=fr&pli=1&authuser=3&project=anilexs&supportedpurview=project
-$discord_link = "https://discord.com/oauth2/authorize?client_id=1277208767645220916&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fanilexs%2Fconnexion&scope=identify+guilds";
+$discord_link = "https://discord.com/oauth2/authorize?client_id=1277208767645220916&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fanilexs%2F&scope=identify+guilds";
 
 
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
@@ -14,7 +14,7 @@ $path = $_SERVER['REQUEST_URI'];
 // Concaténer pour obtenir l'URL complète
 $url = $protocol . $domainName . $path;
 
-echo $url;
+// echo $url;
 
 
 if(!empty($_GET['code'])){
@@ -119,13 +119,13 @@ if(!empty($_GET['code'])){
 // var_dump($_POST);
 ?>
 <link rel="stylesheet" href="http://localhost/anilexs/asset/css/connexion.css">
-<script src="https://accounts.google.com/gsi/client" async defer></script>z
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <div class="contenaire">
     <div class="left">
         
     </div>
     <div class="right">
-        <div class="loginDiscord"><a href="https://discord.com/oauth2/authorize?client_id=1277208767645220916&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fanilexs%2Fconnexion&scope=identify+guilds"><img src="asset/img/discord_logo.png" alt=""></a></div>
+        <div class="loginDiscord"><a href="<?= $discord_link ?>"><img src="asset/img/discord_logo.png" alt=""></a></div>
         
         <div class="googleContenaire">
             <div id="g_id_onload"
