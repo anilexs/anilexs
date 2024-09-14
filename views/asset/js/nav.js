@@ -22,6 +22,12 @@ function authentication(post){
     $('.divAuthentication').on('click', function(e) {
         e.stopPropagation();
     });
-
+    $(document).keyup(function(e) {
+        if (e.key === "Escape") {
+            $(divAuthentication).remove();
+            $(document).off('keyup');
+        }
+    });
+    
     $('.divAuthentication').load("http://localhost/anilexs/views/connexion?page="+currentUrl);
 }

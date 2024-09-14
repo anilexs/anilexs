@@ -1,6 +1,6 @@
 .contenaire {
-    width: 80%;
-    height: 70%;
+    width: 100%;
+    height: 100%;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -9,19 +9,103 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: red;
+    /* background-color: red; */
+    border: 2px solid rgb(0, 174, 255);
+    border-radius: 25px;
+    overflow: hidden;
 }
 
 
 .left{
     height: 100%;
     width: 90%;
-    /* background-color: green; */
+    display: flex;
+    overflow: auto;
+}
+
+.form{
+    width: 60%;
+    margin: auto;
+    color: white;
+}
+
+.input{
+    margin-bottom: 30px;
+}
+
+.pseudo{
+    margin-bottom: 30px;
+}
+
+.email{
+    margin-bottom: 30px;
+}
+
+.password2{
+    display: none;
+    margin-top: 30px;
+}
+
+label{
+    display: block;
+    font-size: 25px;
+}
+
+input{
+    color: white;
+    background-color: transparent;
+    border: 2px solid rgb(0, 174, 255);
+    width: 100%;
+    font-size: 25px;
+}
+
+.information{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.singInbtn, .loginbtn, .mdpLost{
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    color: white;
+}
+.info2, .singIn, .pseudo{
+    display: none;
+}
+.un {
+    margin-bottom: 20px;
+}
+
+.formControle{
+    display: flex;
+    justify-content: space-between;
+}
+
+.login, .singIn, .reload{
+    width: 45%;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    border: 2px solid rgb(0, 174, 255);
+    padding: 10px 5px;
+}
+
+.login:hover, .singIn:hover{
+    border: 2px solid greenyellow;
+}
+
+.reload:hover{
+    border: 2px solid red;
 }
 
 .right{
     height: 100%;
     width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-left: 2px solid rgb(0, 174, 255);
 }
 
 .loginDiscord a{
@@ -40,10 +124,6 @@
 }
 
 .googleContenaire{
-    margin: auto;
+    margin: 0 auto;
     width: 38px;
 }
-
-/* #container{
-    padding: 0 !important;
-} */

@@ -120,9 +120,50 @@ if(!empty($_GET['code'])){
 ?>
 <link rel="stylesheet" href="http://localhost/anilexs/asset/css/connexion.css">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="http://localhost/anilexs/asset/js/connexion.js" async defer></script>
 <div class="contenaire">
     <div class="left">
-        
+        <div class="form">
+            <div class="input">
+                <div class="pseudo">
+                    <label for="">pseudo : </label>
+                    <input type="text" placeholder="pseudo">
+                </div>
+
+                <div class="email">
+                    <label for="">Email : </label>
+                    <input type="text" placeholder="exemple@mail.com">
+                </div>
+    
+                <div class="password">
+                    <label for="">password : </label>
+                    <input type="text" placeholder="password">
+                </div>
+    
+                <div class="password2">
+                    <label for="">confirmation du password : </label>
+                    <input type="text" placeholder="confirmation password">
+                </div>
+            </div>
+
+            <div class="information">
+                <div class="info1 un">
+                    Ou pour s'inscrire,<button class="singInbtn">cliquez ici.</button>
+                </div>
+                <div class="info1">
+                    Vous avez oublié votre mot de passe ?<button class="mdpLost">cliquez ici.</button>
+                </div>
+                <div class="info2">
+                    Ou pour s'identifier,<button class="loginbtn">cliquez ici.</button> <br>
+                </div>
+            </div>
+            
+            <div class="formControle">
+                <button class="login">S'identifier</button>
+                <button class="singIn">S'inscrire</button>
+                <button class="reload">Réinitialiser</button>
+            </div>
+        </div>
     </div>
     <div class="right">
         <div class="loginDiscord"><a href="<?= $discord_link ?>"><img src="asset/img/discord_logo.png" alt=""></a></div>
