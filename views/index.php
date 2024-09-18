@@ -7,10 +7,11 @@ require_once "inc/header.php"; ?>
 
     <div class="divertissement">
         <a href="<?= $host ?>reference" class="opt"></a>
-        <a href="<?= $host ?>" class="opt" id="cut">
+        <a href="<?= $host ?>objectif" class="opt" id="cut">
             <img src="asset/img/solei.png" alt="">
             <img src="asset/img/butterfly-autotronic.png" alt="">
         </a>
+        <a href="<?= $host ?>reference" class="opt"></a>
     </div>
     <div class="all"></div>
 

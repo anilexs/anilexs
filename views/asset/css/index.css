@@ -1,8 +1,13 @@
+body{
+    overflow-x: hidden;
+}
+
 .divertissement{
-    width: 90%;
+    width: 100%;
     margin: 4% auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .opt{
@@ -10,6 +15,7 @@
     height: 300px;
     border-radius: 25px;
     border: 2px solid black;
+    margin-bottom: 3%;
 }
 .opt:hover{
     transform: scale(120%);
