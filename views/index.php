@@ -10,6 +10,9 @@ require_once "inc/header.php"; ?>
         <a href="<?= $host ?>objectif" class="opt" id="cut">
             <img src="asset/img/solei.png" alt="">
             <img src="asset/img/butterfly-autotronic.png" alt="">
+            <div class="legande">
+                <p>ma progression sur mon couteau</p>
+            </div>
         </a>
         <a href="<?= $host ?>reference" class="opt"></a>
     </div>
