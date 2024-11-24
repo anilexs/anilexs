@@ -1,8 +1,6 @@
 <?php
 session_start();
 require_once "../model/database.php";
-require_once "../model/userModel.php";
-require_once "../model/catalogModel.php";
 
 const HTTP_OK = 200;
 const HTTP_BAD_REQUEST = 400; 
@@ -12,17 +10,16 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtoupper($_SERVER['HTTP_X_REQUE
     $response_code = HTTP_BAD_REQUEST;
     $message = "il manque le paramétre ACTION";
 
-    if($_POST['action'] == "singIn"){
+    if($_POST['action'] == ""){
+        $response_code = HTTP_OK;
         
         $responseTab = [
             "response_code" => HTTP_OK,
+            "data" => $_POST['data']
         ];
-
-        reponse($response_code, $responseTab);
-    }else if($_POST['action'] == "deconnexion"){
-        // User::deconnexion();
+        reponse($response_code, $responseTab); 
     }
-
+        
 }else {
     $response_code = HTTP_METHOD_NOT_ALLOWED;
     $responseTab = [
@@ -39,3 +36,5 @@ function reponse($response_code, $response){
     
     echo json_encode($response);
 }
+
+

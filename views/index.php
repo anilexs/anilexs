@@ -14,7 +14,7 @@ require_once "inc/header.php"; ?>
                 <p>ma progression sur mon couteau</p>
             </div>
         </a>
-        <a href="<?= $host ?>reference" class="opt"></a>
+        <a href="<?= $host ?>shop/" class="opt"></a>
     </div>
     <div class="all"></div>
 

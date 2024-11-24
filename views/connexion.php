@@ -69,7 +69,7 @@ if(!empty($_GET['code'])){
         var_dump($result);
         echo "</pre>";
     }else{
-        header("Location: http://localhost/anilexs/connexion");
+        header("Location: " . $host . "connexion");
     }
     ?>
     <!-- <img src="https://cdn.discordapp.com/avatars/<?= $result['id'] ?>/<?= $result['avatar'] ?>.jpg" alt=""> -->
@@ -118,7 +118,7 @@ if(!empty($_GET['code'])){
 // echo "<pre>";
 // var_dump($_POST);
 ?>
-<link rel="stylesheet" href="http://localhost/anilexs/asset/css/connexion.css">
+<link rel="stylesheet" href="http://localhost/anilexs/asset/css/connexion.css" defer>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="http://localhost/anilexs/asset/js/connexion.js" async defer></script>
 <div class="contenaire">
@@ -127,22 +127,22 @@ if(!empty($_GET['code'])){
             <div class="input">
                 <div class="pseudo">
                     <label for="">pseudo : </label>
-                    <input type="text" placeholder="pseudo">
+                    <input type="text" placeholder="pseudo" id="pseudo">
                 </div>
 
                 <div class="email">
                     <label for="">Email : </label>
-                    <input type="text" placeholder="exemple@mail.com">
+                    <input type="text" placeholder="exemple@mail.com" id="email">
                 </div>
     
                 <div class="password">
                     <label for="">password : </label>
-                    <input type="text" placeholder="password">
+                    <input type="text" placeholder="password" id="password">
                 </div>
     
                 <div class="password2">
                     <label for="">confirmation du password : </label>
-                    <input type="text" placeholder="confirmation password">
+                    <input type="text" placeholder="confirmation password" id="password2">
                 </div>
             </div>
 
@@ -166,7 +166,7 @@ if(!empty($_GET['code'])){
         </div>
     </div>
     <div class="right">
-        <div class="loginDiscord"><a href="<?= $discord_link ?>"><img src="asset/img/discord_logo.png" alt=""></a></div>
+        <div class="loginDiscord"><a href="<?= $discord_link ?>"><img src="http://localhost/anilexs/asset/img/discord_logo.png" alt=""></a></div>
         
         <div class="googleContenaire">
             <div id="g_id_onload"
