@@ -2,7 +2,7 @@
 session_start();
 require_once "../model/database.php";
 require_once "../model/userModel.php";
-require_once "../model/catalogModel.php";
+// require_once "../model/catalogModel.php";
 
 const HTTP_OK = 200;
 const HTTP_BAD_REQUEST = 400; 
@@ -13,11 +13,16 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtoupper($_SERVER['HTTP_X_REQUE
     $message = "il manque le paramétre ACTION";
 
     if($_POST['action'] == "singIn"){
-        
+        if($_POST['data']['password'] === $_POST['data']['password2']){
+            $id = "oui";
+        }else{
+            $id = "non";
+        }
         $responseTab = [
             "response_code" => HTTP_OK,
+            "id" => $id
         ];
-
+        $response_code = HTTP_OK;
         reponse($response_code, $responseTab);
     }else if($_POST['action'] == "deconnexion"){
         // User::deconnexion();

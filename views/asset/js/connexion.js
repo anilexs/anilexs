@@ -13,7 +13,7 @@ $(document).ready(function(){
         $(".input input").val("");
     });
     
-    $('#singIn').on('click', function(e) {
+    $('.singIn').on('click', function(e) {
         var pseudo = $("#pseudo").val();
         var email = $("#email").val();
         var password = $("#password").val();
@@ -32,7 +32,7 @@ $(document).ready(function(){
             }
 
             $.ajax({
-                url: "http://localhost/anilexs/controller/UserForm.php",
+                url: "http://localhost/anilexs/form/UserForm.php",
                 type: 'POST',
                 data: {
                     action: "singIn",
@@ -49,7 +49,7 @@ $(document).ready(function(){
         }
     });
     
-    // $('#singIn').on('click', function(e) {
+    // $('.singIn').on('click', function(e) {
     //     var email = $("#email").val();
     //     var password = $("#password").val();
 
