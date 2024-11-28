@@ -117,6 +117,9 @@ if(!empty($_GET['code'])){
 
 // echo "<pre>";
 // var_dump($_POST);
+
+$type1 = (isset($_GET['type']) && $_GET['type'] == 2 ? 'style="display:none"' : '');
+$type2 = (isset($_GET['type']) && $_GET['type'] == 2 ? '' : 'style="display:none"');
 ?>
 <link rel="stylesheet" href="http://localhost/anilexs/asset/css/connexion.css" defer>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -125,7 +128,7 @@ if(!empty($_GET['code'])){
     <div class="left">
         <div class="form">
             <div class="input">
-                <div class="pseudo">
+                <div class="pseudo" <?= $type2 ?>>
                     <label for="">pseudo : </label>
                     <input type="text" placeholder="pseudo" id="pseudo">
                 </div>
@@ -140,27 +143,27 @@ if(!empty($_GET['code'])){
                     <input type="text" placeholder="password" id="password">
                 </div>
     
-                <div class="password2">
+                <div class="password2" <?= $type2 ?>>
                     <label for="">confirmation du password : </label>
                     <input type="text" placeholder="confirmation password" id="password2">
                 </div>
             </div>
 
             <div class="information">
-                <div class="info1 un">
+                <div class="info1 un" <?= $type1 ?>>
                     Ou pour s'inscrire,<button class="singInbtn">cliquez ici.</button>
                 </div>
-                <div class="info1">
+                <div class="info1" <?= $type1 ?>>
                     Vous avez oublié votre mot de passe ?<button class="mdpLost">cliquez ici.</button>
                 </div>
-                <div class="info2">
+                <div class="info2" <?= $type2 ?>>
                     Ou pour s'identifier,<button class="loginbtn">cliquez ici.</button> <br>
                 </div>
             </div>
             
             <div class="formControle">
-                <button class="login">S'identifier</button>
-                <button class="singIn">S'inscrire</button>
+                <button class="login" <?= $type1 ?>>S'identifier</button>
+                <button class="singIn" <?= $type2 ?>>S'inscrire</button>
                 <button class="reload">Réinitialiser</button>
             </div>
         </div>

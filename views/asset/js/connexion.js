@@ -46,6 +46,8 @@ $(document).ready(function(){
                     console.error('Une erreur s\'est produite lors du chargement du contenu.');
                 }
             });
+        }else{
+            console.log("error");
         }
     });
     

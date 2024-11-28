@@ -42,7 +42,6 @@
 }
 
 .password2{
-    display: none;
     margin-top: 30px;
 }
 
@@ -70,9 +69,7 @@ input{
     text-decoration: underline;
     color: white;
 }
-.info2, .singIn, .pseudo{
-    display: none;
-}
+
 .un {
     margin-bottom: 20px;
 }

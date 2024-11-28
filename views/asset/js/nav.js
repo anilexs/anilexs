@@ -2,14 +2,14 @@ var currentUrl = window.location.href;
 console.log(currentUrl);
 $(document).ready(function(){
     $('#authentication').on('click', function(e) {
-        authentication();
+        var cla = $(this).attr('class');
+        authentication(cla);
     });
 });
 
-function authentication(post){
-    if(post != null){
-        console.log(post);
-    }
+function authentication(cla){
+    console.log((cla !== null ? cla : null));
+
     var divAuthentication = $('<div class="divAuthenticationBack"></div>');
         divAuthentication.append('<div class="divAuthentication"></div>');
         
@@ -29,5 +29,5 @@ function authentication(post){
         }
     });
     
-    $('.divAuthentication').load("http://localhost/anilexs/views/connexion?page="+currentUrl);
+    $('.divAuthentication').load("http://localhost/anilexs/views/connexion?page="+currentUrl + (cla != null ? '&type=2' : ''));
 }
