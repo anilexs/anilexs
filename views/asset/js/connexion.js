@@ -84,4 +84,27 @@ $(document).ready(function(){
     //         });
     //     }
     // });
+
+
+
+    function string(length) {
+        var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        var result = '';
+        for (var i = 0; i < length; i++) {
+            result += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return result;
+    }
+
+    $('#rendom').on('click', function(e) {
+        var pseudo = string(5);
+        var email = string(5);
+        email += '@example.com';
+        var password = string(5);
+
+        $('#pseudo').val(pseudo);
+        $('#email').val(email);
+        $('#password').val(password);
+        $('#password2').val(password);
+    });
 });

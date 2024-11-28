@@ -17,7 +17,7 @@ if(isset($_COOKIE['anilexs_Key'])){ ?>
             <li class="logo"><a href="<?= $host ?>"><img src="<?= $host ?>views/asset/img/logo.png" alt=""></a></li>
             <li class="nav">
                 <ul>
-                    <li><button id="authentication">authentication</button></li>
+                    <li><button id="authentication" class="type2">authentication</button></li>
                 </ul>
             </li>
         </ul>

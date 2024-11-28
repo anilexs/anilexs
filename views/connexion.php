@@ -118,7 +118,9 @@ if(!empty($_GET['code'])){
 // echo "<pre>";
 // var_dump($_POST);
 
+// connexion
 $type1 = (isset($_GET['type']) && $_GET['type'] == 2 ? 'style="display:none"' : '');
+// inscription
 $type2 = (isset($_GET['type']) && $_GET['type'] == 2 ? '' : 'style="display:none"');
 ?>
 <link rel="stylesheet" href="http://localhost/anilexs/asset/css/connexion.css" defer>
@@ -167,6 +169,9 @@ $type2 = (isset($_GET['type']) && $_GET['type'] == 2 ? '' : 'style="display:none
                 <button class="reload">Réinitialiser</button>
             </div>
         </div>
+
+        <!-- temporaire -->
+        <div class="temporaire"><button id="rendom">rendom</button></div>
     </div>
     <div class="right">
         <div class="loginDiscord"><a href="<?= $discord_link ?>"><img src="http://localhost/anilexs/asset/img/discord_logo.png" alt=""></a></div>
