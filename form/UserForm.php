@@ -13,14 +13,16 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtoupper($_SERVER['HTTP_X_REQUE
     $message = "il manque le paramétre ACTION";
 
     if($_POST['action'] == "singIn"){
-        if($_POST['data']['password'] === $_POST['data']['password2']){
-            $id = "oui";
+        $condition = $_POST['data']['password'] === $_POST['data']['password2'];
+        $condition2 = $_POST['data']['pseudo'] != '' && $_POST['data']['email'] != '' && $_POST['data']['password'] != '' && $_POST['data']['password2'] != '';
+        if($condition && $condition2){
+            $inscription = User::inscription($_POST['data']['email'], $_POST['data']['pseudo'], $_POST['data']['password']);
         }else{
             $id = "non";
         }
         $responseTab = [
             "response_code" => HTTP_OK,
-            "id" => $id
+            "id" => $inscription
         ];
         $response_code = HTTP_OK;
         reponse($response_code, $responseTab);
