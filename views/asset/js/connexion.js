@@ -14,6 +14,15 @@ $(document).ready(function(){
     });
     
     $('.singIn').on('click', function(e) {
+
+        var loading = $('<div class="loading"></div>');
+        
+            loading.append('<div class="loadingGifContenaire"></div>');
+            $('.loadingGifContenaire').append('<div class="loadingGif"></div>');
+            $('.loadingGifContenaire').append('<div class="loadingGifBar"></div>');
+            
+        $('.contenaire').prepend(loading);
+
         var pseudo = $("#pseudo").val();
         var email = $("#email").val();
         var password = $("#password").val();
@@ -31,21 +40,21 @@ $(document).ready(function(){
                 password2: password2
             }
 
-            $.ajax({
-                url: "http://localhost/anilexs/form/UserForm.php",
-                type: 'POST',
-                data: {
-                    action: "singIn",
-                    data: data,
-                },
-                dataType: 'json',
-                success: function (response) {
-                    console.log(response);
-                },
-                error: function (xhr, status, error) {
-                    console.error('Une erreur s\'est produite lors du chargement du contenu.');
-                }
-            });
+            // $.ajax({
+            //     url: "http://localhost/anilexs/form/UserForm.php",
+            //     type: 'POST',
+            //     data: {
+            //         action: "singIn",
+            //         data: data,
+            //     },
+            //     dataType: 'json',
+            //     success: function (response) {
+            //         console.log(response);
+            //     },
+            //     error: function (xhr, status, error) {
+            //         console.error('Une erreur s\'est produite lors du chargement du contenu.');
+            //     }
+            // });
         }else{
             console.log("error");
         }

@@ -144,3 +144,44 @@ input{
     margin: 0 auto;
     width: 38px;
 }
+
+
+/* js */
+.loading{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* .loadingGif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 9999;
+}
+
+.loadingGifBar {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    border-top: 5px solid white; /* Couleur principale */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Animation pour le cercle tournant */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+} */

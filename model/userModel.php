@@ -1,12 +1,12 @@
 <?php
 require_once "database.php";
 class User{
-    public static function emailStatuVerify($email){
+    public static function emailStatuVerify($email, $pseudo){
         $db = Database::dbConnect();
-        $request = $db->prepare("SELECT id_user, email_verifier, email_code_date, user_actif FROM users WHERE user_email = ?");
+        $request = $db->prepare("SELECT * FROM users WHERE user_email = ? OR pseudo = ?");
 
         try{
-            $request->execute(array($email));
+            $request->execute(array($email, $pseudo));
             $userInfo = $request->fetch(PDO::FETCH_ASSOC);
             return $userInfo;
         }catch(PDOException $e){
@@ -24,18 +24,24 @@ class User{
     
 
     public static function inscription($email, $pseudo, $password){
-        $return = self::emailStatuVerify($email);
-        $code = self::genEmailCode(6);
-        if(!empty($return)){
-            return $code;
+        $userInfo = self::emailStatuVerify($email, $pseudo);
+        if(!empty($userInfo)){
+            $userRetour = ['type1'];
+            if($userInfo['user_email'] == $email){
+                $userRetour []= 1;
+            }else{
+                $userRetour []= 2;
+            }
+            return $userRetour;
         }else{
-            // $db = Database::dbConnect();
-            // $request = $db->prepare("");
+            $userRetour = ['type2'];
+            $db = Database::dbConnect();
+            $request = $db->prepare("INSERT INTO users (`pseudo`, `user_email`, `password`, email_code) VALUES (?,?,?,?)");
+            $code = self::genEmailCode(6);
     
             try{
-                // $request->execute();
-                // $catalog = $request->fetch(PDO::FETCH_ASSOC);
-                return ",cj;sdbvjhsfjhwhfhjhfkjwhfkjhfkq";
+                $request->execute(array($pseudo, $email, $password, $code));
+                return "yes";
             }catch(PDOException $e){
                 $e->getMessage();
             }
